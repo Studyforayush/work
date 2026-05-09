@@ -119,6 +119,9 @@ export default function Services() {
           ease: "power3.out",
           scrollTrigger: { trigger: ".showcase-section", start: "top 70%" },
         });
+      } else {
+        // Prevent hidden cards on mobile when animation styles persist
+        gsap.set(".showcase-img", { opacity: 1, y: 0, clearProps: "transform,opacity" });
       }
     }, root);
     return () => ctx.revert();
