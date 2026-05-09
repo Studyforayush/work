@@ -13,7 +13,7 @@ export default function FinalCTA() {
           Let's build videos, reels, and campaigns that make people notice your business.
         </p>
         <a
-          href="mailto:hello@brolancers.com"
+          href="mailto:brolancers.online@gmail.com"
           className="group mt-10 inline-flex items-center gap-3 rounded-full bg-[#F6F1E8] px-8 py-4 text-base font-medium text-[#12051F] transition hover:scale-[1.02]"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-[#F6E84A]" />

@@ -21,7 +21,7 @@ export default function ContactInfo() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <a
-              href="mailto:hello@brolancers.com"
+              href="mailto:brolancers.online@gmail.com"
               className="group flex items-start gap-4 rounded-3xl border border-[#F6E84A]/15 bg-[#1d0c34] p-6 transition hover:border-[#F6E84A]/40 hover:bg-[#22103e]"
             >
               <span className="flex h-12 w-12 items-center justify-center rounded-3xl bg-[#F6E84A]/10 text-[#F6E84A]">
@@ -38,7 +38,7 @@ export default function ContactInfo() {
               </span>
               <div>
                 <p className="text-sm font-semibold text-[#8B5CFF]">Phone</p>
-                <p className="mt-2 text-sm text-[#F6F1E8]/70">+91 98765 43210</p>
+                <p className="mt-2 text-sm text-[#F6F1E8]/70">+91 93292 45445</p>
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@ export default function ContactInfo() {
             </p>
           </div>
           <form
-            action="mailto:hello@brolancers.com"
+            action="mailto:brolancers.online@gmail.com"
             method="GET"
             className="space-y-6"
           >
