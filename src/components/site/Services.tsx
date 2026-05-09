@@ -121,9 +121,9 @@ export default function Services() {
   }, []);
 
   return (
-    <section ref={root} id="services" className="relative px-6 py-28">
+    <section ref={root} id="services" className="relative px-6 py-20">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-14 max-w-3xl">
+        <div className="mb-10 max-w-3xl">
           <p className="mb-4 text-[10px] uppercase tracking-[0.5em] text-[#F6E84A]">
             / Services
           </p>
@@ -145,17 +145,16 @@ export default function Services() {
               tabIndex={0}
               className="svc-card group relative overflow-hidden rounded-3xl border border-[#F6F1E8]/10 bg-gradient-to-br from-[#1d0a32] to-[#12051F] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#8B5CFF]/40 focus:outline-none focus:ring-2 focus:ring-[#8B5CFF]/20"
             >
-              <div className="mb-12 flex items-center justify-between">
+              <div className="mb-6 flex items-center justify-between">
                 <span className="text-xs font-mono text-[#F6E84A]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <ArrowUpRight className="h-5 w-5 text-[#8B5CFF] transition-transform duration-500 group-hover:rotate-45" />
               </div>
               <h3 className="text-xl font-medium text-[#F6F1E8]">{service.title}</h3>
-
-              <div className="svc-card__overlay absolute inset-x-0 bottom-0 z-10 mt-8 rounded-[2rem] border border-white/10 bg-[#12051F]/85 px-7 py-6 text-[#F6F1E8] opacity-0 shadow-[0_28px_80px_rgba(139,92,255,0.14)] backdrop-blur-xl transition-all duration-400 ease-out will-change-transform will-change-opacity translate-y-4 pointer-events-none">
-                <p className="text-sm leading-6">{service.description}</p>
-              </div>
+              <p className="mt-4 text-sm leading-6 text-[#F6F1E8]/75">
+                {service.description}
+              </p>
 
               <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#8B5CFF]/40 to-transparent opacity-0 transition group-hover:opacity-100" />
             </div>
@@ -163,8 +162,8 @@ export default function Services() {
         </div>
 
         {/* Image Showcase Section */}
-        <div className="showcase-section mt-20">
-          <div className="mb-12">
+        <div className="showcase-section mt-12">
+          <div className="mb-6">
             <p className="mb-3 text-[10px] uppercase tracking-[0.5em] text-[#F6E84A]">
               / Visual Showcase
             </p>
