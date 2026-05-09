@@ -143,7 +143,7 @@ export default function Services() {
             <div
               key={service.title}
               tabIndex={0}
-              className="svc-card group relative overflow-hidden rounded-3xl border border-[#F6F1E8]/10 bg-gradient-to-br from-[#1d0a32] to-[#12051F] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#8B5CFF]/40 focus:outline-none focus:ring-2 focus:ring-[#8B5CFF]/20"
+              className="svc-card group relative overflow-hidden rounded-3xl border border-[#3B1C63] bg-gradient-to-br from-[#1d0a32] to-[#12051F] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#8B5CFF] focus:outline-none focus:ring-2 focus:ring-[#8B5CFF]/30"
             >
               <div className="mb-6 flex items-center justify-between">
                 <span className="text-xs font-mono text-[#F6E84A]">
@@ -152,11 +152,11 @@ export default function Services() {
                 <ArrowUpRight className="h-5 w-5 text-[#8B5CFF] transition-transform duration-500 group-hover:rotate-45" />
               </div>
               <h3 className="text-xl font-medium text-[#F6F1E8]">{service.title}</h3>
-              <p className="mt-4 text-sm leading-6 text-[#F6F1E8]/75">
+              <p className="mt-4 text-sm leading-6 text-[#F6F1E8]">
                 {service.description}
               </p>
 
-              <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#8B5CFF]/40 to-transparent opacity-0 transition group-hover:opacity-100" />
+              <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#8B5CFF] to-transparent opacity-0 transition group-hover:opacity-100" />
             </div>
           ))}
         </div>
@@ -176,7 +176,7 @@ export default function Services() {
             {SHOWCASE_IMAGES.map((item, index) => (
               <div
                 key={item.id}
-                className="showcase-img group relative overflow-hidden rounded-2xl border border-[#F6F1E8]/10 aspect-video cursor-pointer transition-all duration-500 hover:border-[#F6E84A]/40"
+                className="showcase-img group relative overflow-hidden rounded-2xl border border-[#3B1C63] bg-[#12051F] aspect-video cursor-pointer transition-all duration-500 hover:border-[#F6E84A]"
                 onMouseEnter={() => setHoveredImage(item.id)}
                 onMouseLeave={() => setHoveredImage(null)}
               >
@@ -189,11 +189,11 @@ export default function Services() {
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#12051F]/30 via-[#12051F]/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#12051F] via-[#12051F] to-transparent" />
 
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col items-start justify-between p-5">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-[#12051F]/60 px-3 py-1 backdrop-blur">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-[#12051F] px-3 py-1">
                     <span className="text-[9px] uppercase tracking-[0.3em] text-[#F6E84A] font-semibold">
                       {item.tag}
                     </span>
@@ -203,7 +203,7 @@ export default function Services() {
                     <h4 className="text-lg font-semibold text-[#F6F1E8] group-hover:text-[#F6E84A] transition">
                       {item.title}
                     </h4>
-                    <div className="mt-3 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-[#F6F1E8]/70 group-hover:text-[#F6E84A] transition">
+                    <div className="mt-3 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-[#F6F1E8] group-hover:text-[#F6E84A] transition">
                       <Play className="h-3 w-3" />
                       View Project
                     </div>
@@ -211,16 +211,16 @@ export default function Services() {
                 </div>
 
                 {/* Hover Border Glow */}
-                <div className="absolute inset-0 rounded-2xl border border-[#F6E84A]/0 group-hover:border-[#F6E84A]/50 transition-all duration-500 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl border border-[#F6E84A]/0 group-hover:border-[#F6E84A] transition-all duration-500 pointer-events-none" />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-16 rounded-[2rem] border border-[#F6F1E8]/10 bg-[#12051F]/80 p-8 shadow-[0_35px_90px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:flex sm:items-center sm:justify-between">
+        <div className="mt-16 rounded-[2rem] border border-[#3B1C63] bg-[#12051F] p-8 shadow-[0_35px_90px_rgba(0,0,0,0.25)] sm:flex sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.35em] text-[#F6E84A]/80">Need a custom plan?</p>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-[#F6F1E8]/70 sm:text-lg">
+            <p className="text-sm uppercase tracking-[0.35em] text-[#F6E84A]">Need a custom plan?</p>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-[#F6F1E8] sm:text-lg">
               If you want a content system that moves fast, converts, and keeps your
               brand front of mind, we can build your launch, campaign, or ongoing
               social strategy with premium AI & motion production.
