@@ -101,16 +101,16 @@ export default function Services() {
     const ctx = gsap.context(() => {
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-      gsap.from(".svc-card", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: "power3.out",
-        scrollTrigger: { trigger: root.current, start: "top 75%" },
-      });
-
       if (!isMobile) {
+        gsap.from(".svc-card", {
+          y: 60,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: "power3.out",
+          scrollTrigger: { trigger: root.current, start: "top 75%" },
+        });
+
         gsap.from(".showcase-img", {
           y: 80,
           opacity: 0,
@@ -120,8 +120,12 @@ export default function Services() {
           scrollTrigger: { trigger: ".showcase-section", start: "top 70%" },
         });
       } else {
-        // Prevent hidden cards on mobile when animation styles persist
-        gsap.set(".showcase-img", { opacity: 1, y: 0, clearProps: "transform,opacity" });
+        // Keep all cards visible on phones (no animation-dependent visibility).
+        gsap.set(".svc-card, .showcase-img", {
+          opacity: 1,
+          y: 0,
+          clearProps: "transform,opacity",
+        });
       }
     }, root);
     return () => ctx.revert();
@@ -150,20 +154,18 @@ export default function Services() {
             <div
               key={service.title}
               tabIndex={0}
-              className="svc-card group relative overflow-hidden rounded-3xl border border-[#3B1C63] bg-gradient-to-br from-[#1d0a32] to-[#12051F] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#8B5CFF] focus:outline-none focus:ring-2 focus:ring-[#8B5CFF]"
+              className="svc-card relative rounded-3xl border border-[#3B1C63] bg-[#12051F] p-7"
             >
               <div className="mb-6 flex items-center justify-between">
                 <span className="text-xs font-mono text-[#F6E84A]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <ArrowUpRight className="h-5 w-5 text-[#8B5CFF] transition-transform duration-500 group-hover:rotate-45" />
+                <ArrowUpRight className="h-5 w-5 text-[#8B5CFF]" />
               </div>
               <h3 className="text-xl font-medium text-[#F6F1E8]">{service.title}</h3>
               <p className="mt-4 text-sm leading-6 text-[#F6F1E8]">
                 {service.description}
               </p>
-
-              <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#8B5CFF] to-transparent opacity-0 transition group-hover:opacity-100" />
             </div>
           ))}
         </div>

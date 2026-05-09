@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Lenis from "lenis";
-
+import Lenis from "lenis"; 
+ 
 export function useLenis(enabled = true) {
   useEffect(() => {
     if (!enabled) return;
