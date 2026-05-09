@@ -29,7 +29,7 @@ export default function ContactInfo() {
               </span>
               <div>
                 <p className="text-sm font-semibold text-[#F6E84A]">Email</p>
-                <p className="mt-2 text-sm text-[#F6F1E8]/70">hello@brolancers.com</p>
+                <p className="mt-2 text-sm text-[#F6F1E8]/70">brolancers.online@gmail.com</p>
               </div>
             </a>
             <div className="group flex items-start gap-4 rounded-3xl border border-[#8B5CFF]/15 bg-[#1d0c34] p-6 transition hover:border-[#8B5CFF]/40 hover:bg-[#22103e]">
