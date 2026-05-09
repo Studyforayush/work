@@ -113,15 +113,23 @@ export default function WorkGrid() {
               style={{ height: w.h }}
             >
               {w.videoSrc ? (
-                <video
-                  className="absolute inset-0 h-full w-full object-cover opacity-75 transition duration-700 group-hover:opacity-100 group-hover:scale-105"
-                  src={w.videoSrc}
-                  muted
-                  playsInline
-                  loop
-                  autoPlay
-                  preload="metadata"
-                />
+                <>
+                  <video
+                    className="absolute inset-0 h-full w-full object-cover opacity-75 transition duration-700 group-hover:opacity-100 group-hover:scale-105"
+                    src={w.videoSrc}
+                    muted
+                    playsInline
+                    loop
+                    autoPlay
+                    preload="metadata"
+                    onLoadStart={() => {}}
+                    onCanPlay={() => {}}
+                    onError={() => {}}
+                  />
+                  <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#8B5CFF]/20 to-transparent" />
+                  </div>
+                </>
               ) : (
                 <div
                   className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"

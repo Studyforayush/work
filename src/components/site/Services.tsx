@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,8 +48,54 @@ const SERVICES = [
   },
 ];
 
+const SHOWCASE_IMAGES = [
+  {
+    id: 1,
+    title: "AI Genesis",
+    image:
+      "https://images.unsplash.com/photo-1532619187600-91f7a618da23?auto=format&fit=crop&w=1400&q=80",
+    tag: "Futuristic",
+  },
+  {
+    id: 2,
+    title: "Consciousness Rising",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+    tag: "AI Visuals",
+  },
+  {
+    id: 3,
+    title: "Neon Future",
+    image:
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1400&q=80",
+    tag: "Cyberpunk",
+  },
+  {
+    id: 4,
+    title: "Sacred Tech",
+    image:
+      "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80",
+    tag: "Digital Art",
+  },
+  {
+    id: 5,
+    title: "Digital Apocalypse",
+    image:
+      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=80",
+    tag: "Sci-Fi",
+  },
+  {
+    id: 6,
+    title: "Genesis Awakening",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80",
+    tag: "Future",
+  },
+];
+
 export default function Services() {
   const root = useRef<HTMLDivElement>(null);
+  const [hoveredImage, setHoveredImage] = useState<number | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -60,6 +106,15 @@ export default function Services() {
         stagger: 0.08,
         ease: "power3.out",
         scrollTrigger: { trigger: root.current, start: "top 75%" },
+      });
+
+      gsap.from(".showcase-img", {
+        y: 80,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".showcase-section", start: "top 70%" },
       });
     }, root);
     return () => ctx.revert();
@@ -76,6 +131,11 @@ export default function Services() {
             Content Systems For <br />
             Brands That Want <span className="text-[#F6E84A]">Attention</span>
           </h2>
+          <p className="mt-6 max-w-2xl text-base text-[#F6F1E8]/70 sm:text-lg">
+            We build fully managed content systems that combine AI video, social,
+            and digital marketing so your brand can grow with consistent creative
+            momentum.
+          </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -100,6 +160,79 @@ export default function Services() {
               <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#8B5CFF]/40 to-transparent opacity-0 transition group-hover:opacity-100" />
             </div>
           ))}
+        </div>
+
+        {/* Image Showcase Section */}
+        <div className="showcase-section mt-20">
+          <div className="mb-12">
+            <p className="mb-3 text-[10px] uppercase tracking-[0.5em] text-[#F6E84A]">
+              / Visual Showcase
+            </p>
+            <h3 className="text-3xl font-semibold text-[#F6F1E8] sm:text-4xl">
+              Cutting-Edge <span className="text-[#F6E84A]">AI Content</span> Delivered
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {SHOWCASE_IMAGES.map((item, index) => (
+              <div
+                key={item.id}
+                className="showcase-img group relative overflow-hidden rounded-2xl border border-[#F6F1E8]/10 aspect-video cursor-pointer transition-all duration-500 hover:border-[#F6E84A]/40"
+                onMouseEnter={() => setHoveredImage(item.id)}
+                onMouseLeave={() => setHoveredImage(null)}
+              >
+                {/* Background Image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{
+                    backgroundImage: `url(${item.image})`,
+                  }}
+                />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#12051F]/30 via-[#12051F]/10 to-transparent" />
+
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col items-start justify-between p-5">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-[#12051F]/60 px-3 py-1 backdrop-blur">
+                    <span className="text-[9px] uppercase tracking-[0.3em] text-[#F6E84A] font-semibold">
+                      {item.tag}
+                    </span>
+                  </div>
+
+                  <div className="w-full">
+                    <h4 className="text-lg font-semibold text-[#F6F1E8] group-hover:text-[#F6E84A] transition">
+                      {item.title}
+                    </h4>
+                    <div className="mt-3 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-[#F6F1E8]/70 group-hover:text-[#F6E84A] transition">
+                      <Play className="h-3 w-3" />
+                      View Project
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hover Border Glow */}
+                <div className="absolute inset-0 rounded-2xl border border-[#F6E84A]/0 group-hover:border-[#F6E84A]/50 transition-all duration-500 pointer-events-none" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 rounded-[2rem] border border-[#F6F1E8]/10 bg-[#12051F]/80 p-8 shadow-[0_35px_90px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:flex sm:items-center sm:justify-between">
+          <div>
+            <p className="text-sm uppercase tracking-[0.35em] text-[#F6E84A]/80">Need a custom plan?</p>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-[#F6F1E8]/70 sm:text-lg">
+              If you want a content system that moves fast, converts, and keeps your
+              brand front of mind, we can build your launch, campaign, or ongoing
+              social strategy with premium AI & motion production.
+            </p>
+          </div>
+          <a
+            href="#contact"
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-[#F6E84A] px-7 py-3 text-sm font-semibold uppercase tracking-[0.28em] text-[#12051F] transition hover:bg-[#F6E84A]/90 sm:mt-0"
+          >
+            Let’s Talk
+          </a>
         </div>
       </div>
     </section>

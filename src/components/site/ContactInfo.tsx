@@ -1,6 +1,19 @@
+import { useState } from "react";
 import { Mail, Phone, Sparkles } from "lucide-react";
 
 export default function ContactInfo() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const mailtoLink = () => {
+    const subject = encodeURIComponent(`New inquiry from ${name || "Website Visitor"}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
+    return `mailto:brolancers.online@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section className="relative px-6 py-24 bg-[#110417] text-[#F6F1E8]">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top,_rgba(139,92,255,0.28),transparent_55%)] blur-3xl" />
@@ -52,16 +65,13 @@ export default function ContactInfo() {
               Use the form below and we’ll respond fast with a tailored plan for your brand.
             </p>
           </div>
-          <form
-            action="mailto:brolancers.online@gmail.com"
-            method="GET"
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <label className="block text-sm text-[#F6F1E8]/80">
               Name
               <input
                 type="text"
-                name="subject"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
                 placeholder="Your name"
                 className="mt-2 w-full rounded-3xl border border-[#F6F1E8]/10 bg-[#12051F] px-4 py-3 text-[#F6F1E8] outline-none transition focus:border-[#8B5CFF]/50"
               />
@@ -70,7 +80,8 @@ export default function ContactInfo() {
               Email
               <input
                 type="email"
-                name="cc"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
                 placeholder="you@example.com"
                 className="mt-2 w-full rounded-3xl border border-[#F6F1E8]/10 bg-[#12051F] px-4 py-3 text-[#F6F1E8] outline-none transition focus:border-[#8B5CFF]/50"
               />
@@ -78,19 +89,20 @@ export default function ContactInfo() {
             <label className="block text-sm text-[#F6F1E8]/80">
               Message
               <textarea
-                name="body"
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
                 placeholder="Tell us about your project"
                 rows={5}
                 className="mt-2 w-full resize-none rounded-3xl border border-[#F6F1E8]/10 bg-[#12051F] px-4 py-3 text-[#F6F1E8] outline-none transition focus:border-[#8B5CFF]/50"
               />
             </label>
-            <button
-              type="submit"
+            <a
+              href={mailtoLink()}
               className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#F6E84A] via-[#F4E94A] to-[#D7C200] px-6 py-4 text-sm font-semibold text-[#12051F] shadow-[0_16px_40px_rgba(246,232,74,0.25)] transition hover:scale-[1.01] hover:shadow-[0_20px_50px_rgba(246,232,74,0.3)]"
             >
               Mail Us Now
-            </button>
-          </form>
+            </a>
+          </div>
         </div>
       </div>
     </section>
