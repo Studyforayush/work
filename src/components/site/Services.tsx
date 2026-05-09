@@ -99,6 +99,8 @@ export default function Services() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
       gsap.from(".svc-card", {
         y: 60,
         opacity: 0,
@@ -108,14 +110,16 @@ export default function Services() {
         scrollTrigger: { trigger: root.current, start: "top 75%" },
       });
 
-      gsap.from(".showcase-img", {
-        y: 80,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".showcase-section", start: "top 70%" },
-      });
+      if (!isMobile) {
+        gsap.from(".showcase-img", {
+          y: 80,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: ".showcase-section", start: "top 70%" },
+        });
+      }
     }, root);
     return () => ctx.revert();
   }, []);
@@ -131,7 +135,7 @@ export default function Services() {
             Content Systems For <br />
             Brands That Want <span className="text-[#F6E84A]">Attention</span>
           </h2>
-          <p className="mt-6 max-w-2xl text-base text-[#F6F1E8]/70 sm:text-lg">
+          <p className="mt-6 max-w-2xl text-base text-[#F6F1E8] sm:text-lg">
             We build fully managed content systems that combine AI video, social,
             and digital marketing so your brand can grow with consistent creative
             momentum.
@@ -143,7 +147,7 @@ export default function Services() {
             <div
               key={service.title}
               tabIndex={0}
-              className="svc-card group relative overflow-hidden rounded-3xl border border-[#3B1C63] bg-gradient-to-br from-[#1d0a32] to-[#12051F] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#8B5CFF] focus:outline-none focus:ring-2 focus:ring-[#8B5CFF]/30"
+              className="svc-card group relative overflow-hidden rounded-3xl border border-[#3B1C63] bg-gradient-to-br from-[#1d0a32] to-[#12051F] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#8B5CFF] focus:outline-none focus:ring-2 focus:ring-[#8B5CFF]"
             >
               <div className="mb-6 flex items-center justify-between">
                 <span className="text-xs font-mono text-[#F6E84A]">
@@ -188,8 +192,8 @@ export default function Services() {
                   }}
                 />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#12051F] via-[#12051F] to-transparent" />
+                {/* Keep mobile images fully visible without dimming */}
+                <div className="absolute inset-0 hidden sm:block bg-gradient-to-t from-[#12051F] via-[#12051F] to-transparent" />
 
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col items-start justify-between p-5">
@@ -211,7 +215,7 @@ export default function Services() {
                 </div>
 
                 {/* Hover Border Glow */}
-                <div className="absolute inset-0 rounded-2xl border border-[#F6E84A]/0 group-hover:border-[#F6E84A] transition-all duration-500 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[#F6E84A] transition-all duration-500 pointer-events-none" />
               </div>
             ))}
           </div>
@@ -228,7 +232,7 @@ export default function Services() {
           </div>
           <a
             href="#contact"
-            className="mt-6 inline-flex items-center justify-center rounded-full bg-[#F6E84A] px-7 py-3 text-sm font-semibold uppercase tracking-[0.28em] text-[#12051F] transition hover:bg-[#F6E84A]/90 sm:mt-0"
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-[#F6E84A] px-7 py-3 text-sm font-semibold uppercase tracking-[0.28em] text-[#12051F] transition hover:bg-[#E8DC45] sm:mt-0"
           >
             Let’s Talk
           </a>
