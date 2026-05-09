@@ -183,23 +183,23 @@ export default function Services() {
             {SHOWCASE_IMAGES.map((item, index) => (
               <div
                 key={item.id}
-                className="showcase-img group relative overflow-hidden rounded-2xl border border-[#3B1C63] bg-[#12051F] aspect-video cursor-pointer transition-all duration-500 hover:border-[#F6E84A]"
+                className="showcase-img group relative overflow-hidden rounded-2xl border border-[#3B1C63] bg-[#12051F] min-h-[220px] sm:min-h-0 sm:aspect-video cursor-pointer transition-all duration-500 hover:border-[#F6E84A]"
                 onMouseEnter={() => setHoveredImage(item.id)}
                 onMouseLeave={() => setHoveredImage(null)}
               >
                 {/* Background Image */}
                 <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                   style={{
                     backgroundImage: `url(${item.image})`,
                   }}
                 />
 
                 {/* Keep mobile images fully visible without dimming */}
-                <div className="absolute inset-0 hidden sm:block bg-gradient-to-t from-[#12051F] via-[#12051F] to-transparent" />
+                <div className="absolute inset-0 z-10 hidden sm:block bg-gradient-to-t from-[#12051F] via-[#12051F] to-transparent" />
 
                 {/* Content */}
-                <div className="absolute inset-0 flex flex-col items-start justify-between p-5">
+                <div className="absolute inset-0 z-20 flex flex-col items-start justify-between p-5">
                   <div className="inline-flex items-center gap-2 rounded-full bg-[#12051F] px-3 py-1">
                     <span className="text-[9px] uppercase tracking-[0.3em] text-[#F6E84A] font-semibold">
                       {item.tag}
@@ -218,7 +218,7 @@ export default function Services() {
                 </div>
 
                 {/* Hover Border Glow */}
-                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[#F6E84A] transition-all duration-500 pointer-events-none" />
+                <div className="absolute inset-0 z-30 rounded-2xl border border-transparent group-hover:border-[#F6E84A] transition-all duration-500 pointer-events-none" />
               </div>
             ))}
           </div>
